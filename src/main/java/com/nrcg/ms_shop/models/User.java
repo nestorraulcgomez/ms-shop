@@ -6,13 +6,13 @@ public class User {
 
     private String name;
     private String lastname;
-    private String email;
+    private int id;
     private List<Address> addresses;
 
-    public User(String name, String lastname, String email, List<Address> addresses) {
+    public User(String name, String lastname, int id, List<Address> addresses) {
         this.name = name;
         this.lastname = lastname;
-        this.email = email;
+        this.id = id;
         this.addresses = addresses;
     }
 
@@ -24,8 +24,8 @@ public class User {
         return lastname;
     }
 
-    public String getEmail() {
-        return email;
+    public int getId() {
+        return id;
     }
 
     public List<Address> getAddresses() {
