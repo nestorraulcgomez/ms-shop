@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -66,14 +68,14 @@ public class UserController {
     }
 
     @GetMapping("/users/{userId}/addresses/{addressId}")
-    public Address getAddressByUserId(@PathVariable("userId") int userId, @PathVariable("addressId") int addressId) {
-        if (userId < 1 || userId > users.size()) {
-            throw new RuntimeException("User does not exist");
-        }
-        if (addressId < 1 || addressId > users.get(userId - 1).getAddresses().size()) {
-            throw new RuntimeException("Address does not exist");
-        }
-        return users.get(userId - 1).getAddresses().get(addressId - 1);
+    public Map<String, String> getFullAddress(
+            @PathVariable("userId") int userId,
+            @PathVariable("addressId") int addressId) {
+        Address address = users.get(userId - 1).getAddresses().get(addressId - 1);
+        String fullAdress = String.format("%s, %s, %s", address.getStreet(), address.getCity(), address.getCountry());
+        Map<String, String> response = new HashMap<>();
+        response.put("fullAdress", fullAdress);
+        return response;
     }
 
 }
