@@ -3,6 +3,7 @@ package com.nrcg.ms_shop.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nrcg.ms_shop.models.Address;
+import com.nrcg.ms_shop.models.Role;
 import com.nrcg.ms_shop.models.User;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,29 +24,24 @@ public class UserController {
     private List<User> users = new ArrayList<>();
 
     public UserController() {
-        System.out.println("UserController created");
+        System.out.println("UserController");
         users.add(
                 new User(
-                        "Nestor", "Castillo", 1,
-                        Arrays.asList(
-                                new Address(1, "Calle 1", "Ciudad 1", "Pais 1"),
-                                new Address(2, "Calle 2", "Ciudad 2", "Pais 2"))));
+                        1, "John", "Doe",
+                        Arrays.asList(new Role(2, "ADMIN")),
+                        Arrays.asList(new Address(1, "Arturo Prat", "Santiago", "Chile"),
+                                new Address(2, "Providencia", "Santiago", "Chile"))));
         users.add(
                 new User(
-                        "Juan", "Urrutia", 2,
-                        Arrays.asList(
-                                new Address(1, "Calle 3", "Ciudad 3", "Pais 3"),
-                                new Address(2, "Calle 4", "Ciudad 4", "Pais 4"),
-                                new Address(3, "Calle 5", "Ciudad 5", "Pais 5"))));
+                        2, "Jane", "Doe",
+                        Arrays.asList(new Role(1, "USER")),
+                        Arrays.asList(new Address(1, "Teatinos", "Santiago", "Chile"),
+                                new Address(2, "Alonso de Ovalle", "Santiago", "Chile"))));
         users.add(
                 new User(
-                        "Ivan", "Perez", 3,
-                        Arrays.asList(
-                                new Address(1, "Calle 6", "Ciudad 6", "Pais 6"))));
-        users.add(
-                new User(
-                        "Pablo", "Garcia", 4,
-                        Arrays.asList()));
+                        3, "Peter", "Parker",
+                        Arrays.asList(new Role(1, "USER")),
+                        Arrays.asList(new Address(1, "Av. Independencia", "Santiago", "Chile"))));
         System.out.println("Users added");
     }
 

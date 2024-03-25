@@ -4,16 +4,22 @@ import java.util.List;
 
 public class User {
 
+    private int id;
     private String name;
     private String lastname;
-    private int id;
+    private List<Role> roles;
     private List<Address> addresses;
 
-    public User(String name, String lastname, int id, List<Address> addresses) {
+    public User(int id, String name, String lastname, List<Role> roles, List<Address> addresses) {
+        this.id = id;
         this.name = name;
         this.lastname = lastname;
-        this.id = id;
+        this.roles = roles;
         this.addresses = addresses;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -24,8 +30,8 @@ public class User {
         return lastname;
     }
 
-    public int getId() {
-        return id;
+    public List<Role> getRoles() {
+        return roles;
     }
 
     public List<Address> getAddresses() {
