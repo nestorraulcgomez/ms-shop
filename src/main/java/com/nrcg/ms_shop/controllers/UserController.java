@@ -56,9 +56,6 @@ public class UserController {
 
     @GetMapping("/users/{userId}")
     public User getUserById(@PathVariable("userId") int userId) {
-        if (userId < 1 || userId > users.size()) {
-            throw new RuntimeException("User does not exist");
-        }
         return users.get(userId - 1);
     }
 
